@@ -1,122 +1,111 @@
-# 💎 ApexWealth - GenAI-Powered Personalized Financial Advisor
+# 🛡️ SecureShield AI Gateway
+An enterprise-grade AI security middleware and proxy that acts as an intelligent "bouncer" for Large Language Models (LLMs), enforcing data governance, preventing prompt injection, and scrubbing PII in real-time.
 
-### 👥 Team Members
-- **Niketa Tembhare**
-- **Vaishnavi Bodele**
-- **Chetan Dongre**
-- **Kunal Wandhare**
+🌟 Features
+- **⚡ Multi-Layered Security Pipeline**: Requests pass through Unicode Normalization, Input Guard, RBAC Policy Engine, Toxicity Guard, Semantic Guard, and PII Redaction.
+- **🛡️ Active Rate Limiting (Network Guard)**: Middleware rate limiter to restrict request velocity and defend against DDoS attacks.
+- **👤 Role-Based Access Control (RBAC)**: Fine-grained, department-level prompt safety policies (e.g., HR, Finance, and general employee constraints).
+- **🤖 LLM-as-a-Judge Auditing**: Concurrently evaluates prompt toxicity and semantic jailbreak attempts using high-speed cloud LLMs.
+- **🔍 Advanced PII Redaction**: Scrubs emails, phone numbers, API keys, and corporate vault secrets using spaCy, Microsoft Presidio, and custom regex pattern lists.
+- **🔐 Secrets Leak Protection (Output Guard)**: Scans AI responses for leaked JWT tokens, API keys, and server credentials before they leave the gateway.
+- **📊 Admin Monitoring Dashboard**: Visualizes operational traffic, threat analytics, risk distribution graphs, attack correlation trends, and recent activity logs.
 
-ApexWealth is a modern, high-performance web application designed to act as an intelligent, automated financial advisor. By combining a sleek, dark-theme neomorphic React frontend with a high-concurrency FastAPI python backend, ApexWealth leverages Google Gemini-2.5-Flash to construct custom, data-backed budgeting strategies, emergency fund timelines, and diversified investment paths tailored to user habits.
+🛠️ Tech Stack
+### Frontend
+- **React.js & Vite** - Modern, responsive web interface
+- **Tailwind CSS** - Sleek, flexible, and premium dark-mode custom styles
+- **Recharts** - Dynamic data visualization for traffic and threats
+- **Framer Motion** - Fluid micro-animations and page transitions
 
----
+### Backend
+- **Python 3.12** - Core backend runtime
+- **FastAPI & Uvicorn** - High-concurrency asynchronous endpoints
+- **MongoDB & Motor** - Asynchronous database driver for logging, policies, and users
 
-## 🌟 Core Features
+### AI / Security / NLP
+- **Instructor** - Strict JSON structural output enforcement
+- **OpenRouter API** - Gateway connection to model providers (`Llama 3.1 8b`, `Gemini 2.0 Flash`)
+- **Microsoft Presidio & spaCy** - Highly optimized NLP-based anonymization
+- **Lakera Guard API** - Advanced third-party prompt injection analyzer
 
-- **🔐 Secure Session Authentication**: Fully decoupled JWT-based authentication system storing securely hashed credentials.
-- **🧠 Generative AI Personal Advice Engine**: Integrates with Google Gemini-2.5-Flash via OpenRouter to analyze incomes, expenses, and target timelines, returning custom financial blueprints.
-- **📈 Live SVG Visual Analytics**: Displays expense ratios, cashflow trends, and an interactive **Financial Health Score Gauge** calculated from user metrics.
-- **📁 Universal Bank Statement Parser**: Supports drag-and-drop document upload (PDF, CSV, Excel `.xlsx`/`.xls`, and plain text `.txt`). It automatically parses transactions, auto-categorizes them using keyword-density models, and estimates recurring subscriptions.
-- **💬 Interactive follow-up AI Chatbot**: Conversational interface matching the context of the user's financial advice, allowing point-wise, structured Q&A.
-- **💾 Audit Logs & JSON Storage**: Appends structured advising logs with detailed timestamps to a local history database (`history.json`) for persistence and session recalls.
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend (UI Layer)
-- **React.js & Vite** — Next-generation frontend tooling for fast development.
-- **Tailwind CSS** — Sleek custom styling, dark-mode gradients, and glassmorphism.
-- **Lucide React** — Premium iconography.
-- **Recharts** — Responsive interactive charts for trendlines and gauges.
-
-### Backend (Server Layer)
-- **FastAPI & Uvicorn** — Asynchronous Python framework with built-in Pydantic data validations.
-- **PyJWT & Hashlib** — Secure user credential storage and session signing.
-- **pdfplumber & openpyxl** — Python libraries for structural table extraction from PDFs and spreadsheets.
-- **Google Generative AI / OpenRouter** — Large Language Model integration for structured JSON generation.
-
----
-
-## 📂 Project Structure
-
-```text
-ApexWealth/
-├── backend/                  # FastAPI Backend Server
-│   ├── data/                 # Local JSON databases (users.json, history.json)
-│   ├── schemas/              # Pydantic data validation schemas
-│   ├── services/             # Auth, document parsing, and Gemini AI connectors
-│   ├── .env.example          # Local backend template variables
-│   ├── main.py               # Main API router and server runner
-│   └── requirements.txt      # Python dependencies
-│
-├── frontend/                 # React Vite Frontend Application
-│   ├── src/                  # React source files
-│   │   ├── components/       # Dashboard widgets, charts, chatbot, and upload forms
-│   │   ├── services/         # Axios API connection client
-│   │   └── App.jsx           # Main layout router
-│   ├── package.json          # Node dependencies
-│   └── tailwind.config.js    # Neomorphic dark-theme tailwind definitions
-│
-├── .gitignore                # Root Git ignore configuration
-├── .env.example              # Root environment template
-└── README.md                 # Project documentation
+Project Structure
+```
+SecureShield-AI/
+├── backend/             # FastAPI backend
+│   ├── app/             # Server core directories
+│   │   ├── layers/      # 6 pipeline security layers
+│   │   ├── services/    # DB, users, logging, and AI handlers
+│   │   └── config.py    # Environment settings
+│   ├── tests/           # Pipeline test suites
+│   ├── .env.example     # Configuration template
+│   └── requirements.txt # Python dependencies
+├── frontend/            # React + Vite frontend
+│   ├── src/             # Frontend source files
+│   │   ├── pages/       # Dashboard, chat, logs, settings
+│   │   └── components/  # Charts, layout, and pipeline simulator
+│   └── package.json     # Node.js dependencies
+└── README.md            # Project documentation
 ```
 
----
+⚙️ Installation
 
-## ⚙️ Quick Start Installation
-
-### 1️⃣ Clone the Repository
+1️⃣ Clone the Repository
 ```bash
-git clone <your-repository-url>
-cd ApexWealth
+git clone <PRIVATE_URL>
+cd SecureShield-AI
 ```
 
-### 2️⃣ Setup FastAPI Backend
+2️⃣ Setup Backend
 ```bash
 cd backend
 
-# Create a virtual environment
-python -m venv venv
+# Create virtual environment
+python -m venv .venv
 
-# Activate the environment
-# On Windows (PowerShell):
-.\venv\Scripts\Activate.ps1
-# On Linux/Mac:
-source venv/bin/activate
+# Activate virtual environment
+# Windows
+.venv\Scripts\activate
+# Linux/Mac
+source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Create your .env file
-cp .env.example .env
-# Edit .env and enter your OPENROUTER_API_KEY
+# Start FastAPI server
+python -m app.main
 ```
+Backend runs on: `http://localhost:8000`
 
-To run the backend server:
+3️⃣ Setup Frontend
 ```bash
-python main.py
-```
-*Backend is served at: `http://localhost:8000`*
+cd ../frontend
 
----
-
-### 3️⃣ Setup React Frontend
-In a new terminal window:
-```bash
-cd frontend
-
-# Install Node dependencies
+# Install dependencies
 npm install
 
 # Start Vite dev server
 npm run dev
 ```
-*Frontend is served at: `http://localhost:3000`*
+Frontend runs on: `http://localhost:5173`
 
----
+🔥 How It Works
+1. **Submit Prompt**: A user submits a query via the chat dashboard.
+2. **Standardize & Intercept**: Network rate limits apply and Unicode normalizes characters to prevent bypasses.
+3. **Policy & Intent Scan**: Role-based access controls and concurrent LLM judges scan for malicious prompt injection or toxic content.
+4. **PII Scrubbing**: SpaCy, Presidio, and the corporate vault redact emails, phone numbers, and keys.
+5. **Secure Dispatch**: The clean, safe prompt is forwarded to the backend LLM brain.
+6. **Response Audit**: The response is validated to block or scrub secret leakage before hitting the user interface.
 
-## 🔮 Demo Prompts to Try in AI Chat
-*   **Budgeting Check**: *"Based on my numbers, my Swiggy and Zomato spending is high. Suggest a 50/30/20 budget modification."*
-*   **Emergency Fund Calculations**: *"What is the exact target amount for a 4-month emergency cushion, and how long does it take me to save at my current savings rate?"*
-*   **Investment Differences**: *"What is the safety difference between putting my savings in a liquid FD vs a mutual fund for my goal timeline?"*
+🚀 Future Enhancements
+- **Active Firewall Blocking**: Real-time IP banning for users triggering recurrent high-severity security threats.
+- **Exportable PDF Reports**: Automated SOC2/GDPR compliance reporting.
+- **Unified SIEM Integrations**: Export security telemetry straight to Splunk or Datadog.
+- **Multi-Model Routing**: Intelligently dispatch safe prompts to different models depending on tasks and cost optimization.
+
+🤝 Contributing
+Contributions are welcome!
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/NewFeature`)
+3. Commit your changes (`git commit -m 'Add NewFeature'`)
+4. Push to the branch (`git push origin feature/NewFeature`)
+5. Open a Pull Request

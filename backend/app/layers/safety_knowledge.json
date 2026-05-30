@@ -1,0 +1,72 @@
+{
+  "_comment": "SecureShield Safety Knowledge Base — used by the Hybrid Evaluator for fast local classification.",
+
+  "safe_greetings": [
+    "hi", "hii", "hiii", "hello", "hey", "heya", "howdy", "greetings",
+    "good morning", "good afternoon", "good evening", "good night",
+    "sup", "what's up", "how are you", "how r u", "how do you do",
+    "nice to meet you", "pleased to meet you", "thanks", "thank you",
+    "thank u", "thx", "ty", "bye", "goodbye", "see you", "take care",
+    "ok", "okay", "sure", "got it", "understood", "alright", "cool",
+    "great", "awesome", "perfect", "wonderful", "sounds good"
+  ],
+
+  "safe_conversational_patterns": [
+    "what can you do", "who are you", "what are you", "help me",
+    "can you help", "what is", "how does", "explain", "tell me about",
+    "what does", "describe", "summarize", "list", "show me", "give me",
+    "can you", "could you", "please", "would you", "i need help with",
+    "i have a question", "i want to know", "i am looking for",
+    "what time", "how to", "steps to", "best practices for",
+    "what should i", "how should i", "when should", "why is"
+  ],
+
+  "threat_signals": {
+    "prompt_injection": [
+      "ignore previous", "ignore all previous", "ignore instructions",
+      "forget all previous", "forget your instructions", "disregard",
+      "override instructions", "new instructions", "system prompt",
+      "ignore your system", "act as if", "pretend you are", "you are now",
+      "your new role", "ignore the above", "disregard the above",
+      "do not follow", "stop following", "developer mode", "dan mode",
+      "jailbreak", "jail break", "unrestricted mode", "no restrictions",
+      "bypass your filters", "bypass security", "bypass the rules"
+    ],
+    "data_exfiltration": [
+      "dump all", "list all users", "show all records", "extract all",
+      "get all passwords", "give me all", "show me all data",
+      "reveal the database", "access restricted", "show internal",
+      "reveal secret", "show secret key", "reveal admin password",
+      "extract auth token", "show api key", "show credentials",
+      "leak information", "exfiltrate", "give me the password",
+      "what is the admin password", "show me root access"
+    ],
+    "system_abuse": [
+      "drop database", "drop table", "delete all", "sudo rm",
+      "rm -rf", "format disk", "shutdown server", "kill process",
+      "execute command", "run shell", "os.system", "subprocess",
+      "exec(", "__import__", "eval(", "system call",
+      "hack", "crack", "exploit", "vulnerability", "zero day",
+      "reverse shell", "backdoor", "malware", "ransomware"
+    ],
+    "social_engineering": [
+      "i am the admin", "i am a developer", "i am your creator",
+      "you must obey", "i command you", "this is a test",
+      "testing mode", "debug mode", "maintenance mode",
+      "i have permission", "i am authorized", "i have clearance"
+    ]
+  },
+
+  "risk_weights": {
+    "prompt_injection": 0.90,
+    "data_exfiltration": 0.85,
+    "system_abuse": 0.95,
+    "social_engineering": 0.75
+  },
+
+  "thresholds": {
+    "fast_track_allow": 0.15,
+    "escalate_to_ai": 0.50,
+    "immediate_block": 0.75
+  }
+}
